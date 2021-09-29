@@ -15,6 +15,7 @@ public class Auto implements HanggalRendelkezo {
         hengerurtartalomErtekek.put("1.6", 1560);
     }
 
+    //Adattagok
     private String gyarto;
     private String modell;
     private Integer hengerurtartalom;
