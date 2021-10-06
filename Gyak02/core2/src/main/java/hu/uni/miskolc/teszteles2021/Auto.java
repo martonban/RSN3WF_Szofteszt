@@ -1,5 +1,7 @@
 package hu.uni.miskolc.teszteles2021;
 
+import hu.uni.miskolc.teszteles2021.exception.AjtokszamaNemMegfellelo;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -126,7 +128,10 @@ public class Auto implements HanggalRendelkezo {
         return ajtokSzama;
     }
 
-    protected void setAjtokSzama(int ajtokSzama) {
+    protected void setAjtokSzama(int ajtokSzama) throws AjtokszamaNemMegfellelo {
+        if(ajtokSzama < 0 || ajtokSzama > 5){
+            throw new AjtokszamaNemMegfellelo(ajtokSzama);
+        }
         this.ajtokSzama = ajtokSzama;
     }
 
@@ -148,4 +153,6 @@ public class Auto implements HanggalRendelkezo {
         this.ajtokSzama = ajtokSzama;
     }
 
+    public Auto() {
+    }
 }
