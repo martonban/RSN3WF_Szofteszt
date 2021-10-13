@@ -4,4 +4,6 @@ public class AjtokszamaNemMegfellelo extends Exception {
     public AjtokszamaNemMegfellelo(int ajtokSzama) {
         super(String.valueOf(ajtokSzama));
     }
+
+
 }

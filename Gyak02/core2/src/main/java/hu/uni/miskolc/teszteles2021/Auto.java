@@ -1,7 +1,10 @@
 package hu.uni.miskolc.teszteles2021;
 
 import hu.uni.miskolc.teszteles2021.exception.AjtokszamaNemMegfellelo;
+import hu.uni.miskolc.teszteles2021.exception.GyartasiIdoNemMegfelelo;
+import hu.uni.miskolc.teszteles2021.exception.RendszamNemMegfelelo;
 
+import javax.management.relation.RelationNotFoundException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,7 +67,11 @@ public class Auto implements HanggalRendelkezo {
         return rendszam;
     }
 
-    public void setRendszam(String rendszam) {
+    public void setRendszam(String rendszam) throws RendszamNemMegfelelo {
+        String regex = "^([^a-z0-9Q]{3}-(?!000)[0-9]{3})$";
+        if(!rendszam.matches(regex)){
+            throw new RendszamNemMegfelelo(rendszam);
+        }
         this.rendszam = rendszam;
     }
 
@@ -80,7 +87,10 @@ public class Auto implements HanggalRendelkezo {
         return gyartasiIdo;
     }
 
-    protected void setGyartasiIdo(LocalDate gyartasiIdo) {
+    protected void setGyartasiIdo(LocalDate gyartasiIdo) throws GyartasiIdoNemMegfelelo {
+        if(gyartasiIdo.isAfter(LocalDate.now()) || gyartasiIdo.isBefore(LocalDate.of(1885,01,01))){
+            throw new GyartasiIdoNemMegfelelo(gyartasiIdo);
+        }
         this.gyartasiIdo = gyartasiIdo;
     }
 
