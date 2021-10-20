@@ -105,4 +105,12 @@ public class AutoTest {
         String gyartasiIdo="1600-04-17";
         testAuto.setGyartasiIdo(LocalDate.parse(gyartasiIdo));
     }
+
+    @Test
+    public void testSzinkodSettet(){
+        String szinkod = "#FFFFFF";
+        testAuto.setSzinHex(szinkod);
+
+    }
+
 }

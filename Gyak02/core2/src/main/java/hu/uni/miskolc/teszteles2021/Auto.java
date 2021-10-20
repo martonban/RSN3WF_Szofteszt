@@ -1,10 +1,12 @@
 package hu.uni.miskolc.teszteles2021;
 
+import hu.uni.miskolc.teszteles2021.enums.Kivitel;
+import hu.uni.miskolc.teszteles2021.enums.Uzemanyag;
+import hu.uni.miskolc.teszteles2021.enums.Valto;
 import hu.uni.miskolc.teszteles2021.exception.AjtokszamaNemMegfellelo;
 import hu.uni.miskolc.teszteles2021.exception.GyartasiIdoNemMegfelelo;
 import hu.uni.miskolc.teszteles2021.exception.RendszamNemMegfelelo;
 
-import javax.management.relation.RelationNotFoundException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
