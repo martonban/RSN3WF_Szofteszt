@@ -10,6 +10,7 @@
     <modules>
         <module>core2</module>
         <module>service</module>
+        <module>dao-mongo</module>
     </modules>
 
     <properties>

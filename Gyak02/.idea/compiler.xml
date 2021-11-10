@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="core2" />
         <module name="service" />
+        <module name="dao-mongo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

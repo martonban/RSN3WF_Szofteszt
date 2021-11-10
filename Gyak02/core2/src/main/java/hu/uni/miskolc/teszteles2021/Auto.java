@@ -10,9 +10,13 @@ import hu.uni.miskolc.teszteles2021.exception.RendszamNemMegfelelo;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Auto implements HanggalRendelkezo {
+
+
     public static Map<String, Integer> hengerurtartalomErtekek;
+
 
     static {
         hengerurtartalomErtekek = new HashMap<>();
@@ -21,6 +25,8 @@ public class Auto implements HanggalRendelkezo {
         hengerurtartalomErtekek.put("1.4", 1390);
         hengerurtartalomErtekek.put("1.6", 1560);
     }
+
+
 
     //Adattagok
     private String gyarto;
@@ -61,8 +67,13 @@ public class Auto implements HanggalRendelkezo {
         return hengerurtartalom;
     }
 
+    public void setHengerurtartalom(Integer hengerurtartalom){
+		this.hengerurtartalom = hengerurtartalom;
+    }
+
+
     public void setHengerurtartalom(String hengerurtartalom){
-		this.hengerurtartalom = hengerurtartalomErtekek.get(hengerurtartalom);
+        this.hengerurtartalom = hengerurtartalomErtekek.get(hengerurtartalom);
     }
 
     public String getRendszam() {
@@ -147,24 +158,75 @@ public class Auto implements HanggalRendelkezo {
         this.ajtokSzama = ajtokSzama;
     }
 
+    public Auto(String gyarto, String modell, Integer hengerurtartalom, String rendszam, Uzemanyag uzemanyag,
+                LocalDate gyartasiIdo, String szinHex, boolean korozott, String forgalmiSzama, Valto valto, Kivitel kivitel,
+                int ajtokSzama) throws AjtokszamaNemMegfellelo, GyartasiIdoNemMegfelelo, RendszamNemMegfelelo {
+        super();
+        setGyarto(gyarto);
+        setModell(modell);
+        setHengerurtartalom(hengerurtartalom);
+        setRendszam(rendszam);
+        setUzemanyag(uzemanyag);
+        setGyartasiIdo(gyartasiIdo);
+        setSzinHex(szinHex);
+        setKorozott(korozott);
+        setForgalmiSzama(forgalmiSzama);
+        setValto(valto);
+        setKivitel(kivitel);
+        setAjtokSzama(ajtokSzama);
+    }
+
+
     public Auto(String gyarto, String modell, String hengerurtartalom, String rendszam, Uzemanyag uzemanyag,
                 LocalDate gyartasiIdo, String szinHex, boolean korozott, String forgalmiSzama, Valto valto, Kivitel kivitel,
-                int ajtokSzama) {
+                int ajtokSzama) throws AjtokszamaNemMegfellelo, GyartasiIdoNemMegfelelo, RendszamNemMegfelelo {
         super();
-        this.gyarto = gyarto;
-        this.modell = modell;
+        setGyarto(gyarto);
+        setModell(modell);
         setHengerurtartalom(hengerurtartalom);
-        this.rendszam = rendszam;
-        this.uzemanyag = uzemanyag;
-        this.gyartasiIdo = gyartasiIdo;
-        this.szinHex = szinHex;
-        this.korozott = korozott;
-        this.forgalmiSzama = forgalmiSzama;
-        this.valto = valto;
-        this.kivitel = kivitel;
-        this.ajtokSzama = ajtokSzama;
+        setRendszam(rendszam);
+        setUzemanyag(uzemanyag);
+        setGyartasiIdo(gyartasiIdo);
+        setSzinHex(szinHex);
+        setKorozott(korozott);
+        setForgalmiSzama(forgalmiSzama);
+        setValto(valto);
+        setKivitel(kivitel);
+        setAjtokSzama(ajtokSzama);
     }
 
     public Auto() {
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Auto auto = (Auto) o;
+        return korozott == auto.korozott && ajtokSzama == auto.ajtokSzama && gyarto.equals(auto.gyarto) && modell.equals(auto.modell) && hengerurtartalom.equals(auto.hengerurtartalom) && rendszam.equals(auto.rendszam) && uzemanyag == auto.uzemanyag && gyartasiIdo.equals(auto.gyartasiIdo) && szinHex.equals(auto.szinHex) && forgalmiSzama.equals(auto.forgalmiSzama) && valto == auto.valto && kivitel == auto.kivitel;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(gyarto, modell, hengerurtartalom, rendszam, uzemanyag, gyartasiIdo, szinHex, korozott, forgalmiSzama, valto, kivitel, ajtokSzama);
+    }
+
+    @Override
+    public String toString() {
+        return "Auto{" +
+                "gyarto='" + gyarto + '\'' +
+                ", modell='" + modell + '\'' +
+                ", hengerurtartalom=" + hengerurtartalom +
+                ", rendszam='" + rendszam + '\'' +
+                ", uzemanyag=" + uzemanyag +
+                ", gyartasiIdo=" + gyartasiIdo +
+                ", szinHex='" + szinHex + '\'' +
+                ", korozott=" + korozott +
+                ", forgalmiSzama='" + forgalmiSzama + '\'' +
+                ", valto=" + valto +
+                ", kivitel=" + kivitel +
+                ", ajtokSzama=" + ajtokSzama +
+                '}';
     }
 }

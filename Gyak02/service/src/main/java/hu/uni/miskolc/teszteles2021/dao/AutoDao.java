@@ -26,4 +26,6 @@ public interface AutoDao {
     public void deleteAutoById(String rendszam);
 
 
+
+
 }
